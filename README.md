@@ -1,5 +1,15 @@
-##Template 10: Getting Started
+## Template 10: Getting Started
 
-If you want Template 10, just open up Visual Studio 2015 and search "Template 10" in the Extension Manager. After you install it, when you go File>New>Project the Template 10 project template will be in your list.
+**Ready to use Template 10?**
 
-After you create a project, head to our documentation wiki and get started: <http://aka.ms/Template10>
+> install-package Template10 -2.0.2
+
+Template 10 is unlisted in Nuget for a few more weeks. 
+
+1. Application startup manageemnt
+1. Navigation management
+1. Dependency injection
+1. View-Model promotion
+1. In-process messaging
+
+I will spend the time to update the docs, too. #UWP

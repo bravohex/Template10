@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+
+  <!-- do not deploy -->
+
+  <PropertyGroup>
+
+    <Title>Template10 Extras</Title>
+    <PackageId>Template10.Extras</PackageId>
+    <AssemblyName>Template10.Extras</AssemblyName>
+    <Description>Template10 Extras</Description>
+
+    <VersionPrefix>1.2.0</VersionPrefix>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+
+    <TargetFrameworks>uap10.0.17134</TargetFrameworks>
+    <RootNamespace>Template10</RootNamespace>
+    <PackageTags>Windows 10, Windows10, W10, UAP, UWP, WinRT, XAML, Template 10, Template10, T10, Universal App, Windows Universal</PackageTags>
+    <RepositoryType></RepositoryType>
+    <RepositoryUrl>https://aka.ms/template10</RepositoryUrl>
+    <PackageIcon>NuGetLogo.png</PackageIcon>
+    <PackageProjectUrl>https://aka.ms/template10</PackageProjectUrl>
+    <Copyright>Jerry Nixon, Daren May</Copyright>
+    <Authors>Jerry Nixon, Daren May</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\**" />
+    <Compile Remove="Services\Settings\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Services\Settings\**" />
+    <None Remove="Common\**" />
+    <None Remove="Services\Settings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="7.0.0.362" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <Version>2.0.$([System.DateTime]::UtcNow.ToString(yyMMdd))</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <VersionSuffix>D$([System.DateTime]::UtcNow.ToString(yyMMdd))</VersionSuffix>
+  </PropertyGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="$(OutputPath)$(PackageId).$(PackageVersion).nupkg" DestinationFolder="c:\nuget" />
+  </Target>
+
+</Project>
